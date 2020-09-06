@@ -1,12 +1,8 @@
-#classicformpage .view {
-  background-image: url("http://mdbootstrap.com/img/Photos/Others/images/91.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: 100vh;
+body{
+  background-color: black;
 }
 
-#classicformpage .gradient {
+.gradiente {
   background: -webkit-linear-gradient(
     45deg,
     rgba(0, 0, 0, 0.7),
@@ -24,6 +20,31 @@
   );
 }
 
-#classicformpage .card {
-  background-color: rgba(126, 123, 215, 0.2);
+.card {
+  /*background-color: rgba(126, 123, 215, 0.2);*/
+  background-color: transparent;
+  border: 2px teal solid;
 }
+
+input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=search-md]:focus:not([readonly]), input[type=search]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=url]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) {
+  border-bottom: 2px solid #9c27b0  !important;
+  box-shadow: 0 1px 0 0 #9c27b0  !important;
+  color: #9c27b0 !important;
+}
+
+.md-form input[type='text']:focus:not([readonly]) + label {
+  color: #9c27b0  !important;
+}
+
+.md-form input[type='email']:focus:not([readonly]) + label {
+  color: #9c27b0  !important;
+}
+
+.md-form input[type='textarea']:focus:not([readonly]) + label {
+  color: #9c27b0  !important;
+}
+
+.rounded{
+  border-radius: 20px !important;
+}
+

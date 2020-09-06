@@ -9,6 +9,7 @@ import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Services } from './components/Services';
 import './App.css';
+import { ServiceFrontEnd } from './components/ServiceFrontEnd';
 
 
 function App() {
@@ -16,25 +17,24 @@ function App() {
 
     <BrowserRouter>
 
-      <div id="classicformpage">
 
-        <div className="view ">
+      <div className="view">
 
-          <Navbar />
+        <Navbar />
 
-          <Switch>
+        <Switch>
 
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/services" component={Services} />
-            <Route exact path="/contact" component={Contact} />
-            <Route path='*' exact={true} component={Contact} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/services" component={Services} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/frontend" component={ServiceFrontEnd} />
+          <Route path='*' exact={true} component={Contact} />
 
-          </Switch>
-
-        </div>
+        </Switch>
 
       </div>
+
 
     </BrowserRouter>
 

@@ -10,7 +10,7 @@ export const Navbar = () => {
     }
 
     return (
-        <MDBNavbar color="unique-color-dark" dark fixed expand="md">
+        <MDBNavbar transparent dark expand="md">
             <MDBContainer>
                 <MDBNavbarBrand>
                     <MDBNavLink to={"/"}>
@@ -34,7 +34,7 @@ export const Navbar = () => {
                         </MDBNavItem>
                         <MDBNavItem>
                             <MDBNavLink className="waves-effect waves-light" to="#!">
-                                <MDBIcon fab icon="twitter" />
+                                <MDBIcon fab icon="linkedin" />
                             </MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>

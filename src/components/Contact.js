@@ -1,58 +1,101 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MDBMask, MDBRow, MDBCol, MDBIcon, MDBBtn, MDBView, MDBContainer, MDBCard, MDBCardBody, MDBInput } from "mdbreact";
 import WOW from 'wowjs';
+import emailjs from 'emailjs-com';
 
 export const Contact = () => {
+
+    const [emailDetails, setEmailDetails] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
 
     useEffect(() => {
         new WOW.WOW().init();
     }, []);
 
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('gmail', 'template_XDvVhAkd', e.target, 'user_4WAJEjCbst5IW66yG17Ga')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+
+        setEmailDetails({
+            ...emailDetails, user_name: '',
+            user_email: '',
+            message: '',
+        })
+    }
+
+    const handleChange = async e => {
+        const { name, value } = e.target;
+
+        setEmailDetails(prevState => ({
+            ...prevState,
+            [name]: value
+        }))
+
+    }
+
     return (
-        <MDBView>
-            <MDBMask className="d-flex justify-content-center align-items-center gradient" >
-                <MDBContainer >
-                    <MDBRow className="justify-content-center" >
-                        <MDBCol md="6" >
-                            <MDBCard className="wow fadeInDown" data-wow-iteration="1" data-wow-offset="80" data-wow-delay=".75s">
-                                <MDBCardBody>
+        <div className="row justify-content-center align-items-center pl-3 pr-3 ">
+            <MDBCol md="4" >
+                <MDBCard className="wow fadeInDown" data-wow-iteration="1" data-wow-offset="80" data-wow-delay=".75s">
+                    <MDBCardBody>
 
-                                    <form >
-                                        <h3 className="text-center mb-4 white-text">Contact</h3>
-                                        <hr className="hr-light" />
-                                        <MDBInput
-                                            type="textarea"
-                                            label="Icon Prefix"
-                                            rows="2"
-                                            icon="envelope"
-                                            className="white-text"
-                                            iconClass="white-text"
-                                        />
-                                        <div className="grey-white">
-                                            <MDBInput label="Type your email" icon="envelope" group type="email" className="white-text" iconClass="white-text" validate error="wrong"
-                                                success="right" />
-                                            <MDBInput label="Type a password" icon="lock" group type="password" className="white-text" iconClass="white-text" validate />
-                                        </div>
+                        <form onSubmit={(e) => handleSubmit(e)} >
+                            <h2 className="text-center mb-4 mt-4 white-text">Contact</h2>
+                            <hr className="hr-light" />
+                            <input type="hidden" name="contact_number" />
 
-                                        <div className="text-center py-4 mt-2">
-                                            <MDBBtn className="btn btn-outline-purple" type="submit">
-                                                Send
+                            <MDBInput
+                                type="text"
+                                name="name"
+                                label="Type your name"
+                                rows="2"
+                                icon="envelope"
+                                className="white-text"
+                                iconClass="white-text"
+                                value={emailDetails.user_name}
+                                onChange={handleChange}
+                            />
+                            <div className="grey-white">
+                                <MDBInput label="Type your email" name="email" icon="envelope" group type="email" className="white-text" iconClass="white-text" validate error="wrong"
+                                    success="right" value={emailDetails.user_email} onChange={handleChange} />
+                            </div>
+                            <MDBInput
+                                type="textarea"
+                                name="message"
+                                label="Type your message"
+                                rows="2"
+                                icon="envelope"
+                                className="white-text"
+                                iconClass="white-text"
+                                value={emailDetails.message}
+                                onChange={handleChange}
+                            />
+
+                            <div className="text-center py-4 mt-2">
+                                <MDBBtn className="btn btn-outline-purple" type="submit">
+                                    Send
                                                 <MDBIcon far icon="paper-plane" className="ml-2" />
-                                            </MDBBtn>
-                                        </div>
-                                    </form>
+                                </MDBBtn>
+                            </div>
+                        </form>
 
-                                </MDBCardBody>
+                    </MDBCardBody>
 
-                            </MDBCard>
+                </MDBCard>
 
-                        </MDBCol>
+            </MDBCol>
 
-                    </MDBRow>
+        </div>
 
-                </MDBContainer>
-
-            </MDBMask>
-        </MDBView>
     )
 }
