@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { MDBNavbar, MDBIcon, MDBContainer, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline } from "mdbreact";
+import { MDBNavbar, MDBIcon, MDBContainer, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
 
-export const Navbar = () => {
+export const Navbar = ({ checkboxTheme }) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -42,7 +42,9 @@ export const Navbar = () => {
                                 <MDBIcon fab icon="github" />
                             </MDBNavLink>
                         </MDBNavItem>
-
+                        <MDBNavItem>
+                            {checkboxTheme}
+                        </MDBNavItem>
                     </MDBNavbarNav>
                 </MDBCollapse>
             </MDBContainer>

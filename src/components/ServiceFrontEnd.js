@@ -1,21 +1,29 @@
-import React, { useState } from 'react';
-import { MDBRow } from 'mdbreact';
+import React, { useState, Fragment } from 'react';
+import { MDBRow, MDBBtn } from 'mdbreact';
 import { ServiceCard } from './ServiceCard';
+import { Link } from 'react-router-dom';
+import { dataFrontend } from '../helpers/projectsFrontend'
 
 export const ServiceFrontEnd = () => {
 
-    const [data, setData] = useState([{ "url": "https://w7.pngwing.com/pngs/713/936/png-transparent-spring-framework-representational-state-transfer-java-api-for-restful-web-services-microservices-others-text-trademark-logo.png", "color": "#00C851" }, { "url": "https://w7.pngwing.com/pngs/713/936/png-transparent-spring-framework-representational-state-transfer-java-api-for-restful-web-services-microservices-others-text-trademark-logo.png", "color": "#00C851" }, { "url": "https://w7.pngwing.com/pngs/713/936/png-transparent-spring-framework-representational-state-transfer-java-api-for-restful-web-services-microservices-others-text-trademark-logo.png", "color": "#00C851" }]);
+    const [data, setData] = useState(dataFrontend);
 
     return (
-        <MDBRow className="justify-content-center align-items-center p-3">
+        <Fragment>
+            <MDBRow className="justify-content-center align-items-center pt-3">
+                <MDBBtn outline className="rounded frontend" color="info">Frontend</MDBBtn>
+                <Link to="/services/backend"><MDBBtn outline className={"rounded "} color="success">Backend</MDBBtn></Link>
+            </MDBRow>
+            <MDBRow className="justify-content-center align-items-center p-3">
 
-            {
-                data.map((d) =>
-                    <ServiceCard props={d} />
-                )
-            }
+                {
+                    data.map((d) =>
+                        <ServiceCard props={d} />
+                    )
+                }
 
-        </MDBRow>
+            </MDBRow>
+        </Fragment>
     )
 
 }

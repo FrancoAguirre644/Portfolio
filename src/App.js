@@ -7,37 +7,65 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Home } from './components/Home';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
-import { Services } from './components/Services';
 import './App.css';
 import { ServiceFrontEnd } from './components/ServiceFrontEnd';
-
+import { ServiceBackEnd } from './components/ServiceBackEnd';
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "./helpers/themes/GlobalStyles";
+import { lightTheme, darkTheme } from "./helpers/themes/themes";
+import { useDarkMode } from "./helpers/themes/useDarkMode";
 
 function App() {
+
+  const [theme, themeToggler] = useDarkMode();
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
+  const checkboxTheme = (
+    <div className="toggle-container">
+      <span style={{ color: themeMode === darkTheme ? "grey" : "yellow" }}>☀︎</span>
+      <span className="toggle">
+        <input
+          onChange={themeToggler}
+          id="checkbox"
+          className="checkbox"
+          type="checkbox"
+          checked={themeMode === darkTheme ? true : false}
+        />
+        <label htmlFor="checkbox" />
+      </span>
+      <span style={{ color: themeMode === darkTheme ? "slateblue" : "grey" }}>☾</span>
+    </div>
+  )
+
   return (
 
-    <BrowserRouter>
+    <ThemeProvider theme={themeMode}>
+      <>
+        <GlobalStyles />
 
+        <BrowserRouter>
 
-      <div className="view">
+          <div className="view">
 
-        <Navbar />
+            <Navbar checkboxTheme={checkboxTheme} />
 
-        <Switch>
+            <Switch>
 
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/services" component={Services} />
-          <Route exact path="/contact" component={Contact} />
-          <Route exact path="/frontend" component={ServiceFrontEnd} />
-          <Route path='*' exact={true} component={Contact} />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/contact" component={Contact} />
+              <Route exact path={["/services/frontend", "/services"]} component={ServiceFrontEnd} />
+              <Route exact path="/services/backend" component={ServiceBackEnd} />
+              <Route path='*' exact={true} component={Contact} />
 
-        </Switch>
+            </Switch>
 
-      </div>
+          </div>
 
+        </BrowserRouter>
 
-    </BrowserRouter>
-
+      </>
+    </ThemeProvider>
   );
 }
 
