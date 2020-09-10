@@ -11,7 +11,9 @@
     "mdbreact": "^4.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^6.8.0",
     "react-scripts": "3.4.3",
+    "react-toast-notifications": "^2.4.0",
     "styled-components": "^5.2.0",
     "styled-theming": "^2.2.0",
     "wowjs": "^1.1.3"

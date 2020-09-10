@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { MDBCol, MDBCard, MDBCardBody, MDBInput } from "mdbreact";
+import React, { useEffect, useRef } from 'react';
+import { MDBCol, MDBCard, MDBCardBody } from "mdbreact";
 import WOW from 'wowjs';
 import emailjs from 'emailjs-com';
+import { useForm } from 'react-hook-form';
+import ErrorMessage from '../helpers/errors/errorMessage';
+import { ToastProvider, useToasts } from 'react-toast-notifications';
 
-export const Contact = () => {
+const FormWithToasts = () => {
 
     useEffect(() => {
         new WOW.WOW().init({
@@ -11,38 +14,30 @@ export const Contact = () => {
         });
     }, []);
 
-    const [emailDetails, setEmailDetails] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
+    const form = useRef(null);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const { addToast } = useToasts();
 
-        emailjs.sendForm('gmail', 'template_XDvVhAkd', e.target, 'user_4WAJEjCbst5IW66yG17Ga')
+    const {
+        register,
+        handleSubmit,
+        errors,
+        formState: { isSubmitting }
+    } = useForm();
+
+    const onSubmit = (data) => {
+
+        const target = form.current;
+
+        emailjs.sendForm('gmail', 'template_XDvVhAkd', target, 'user_4WAJEjCbst5IW66yG17Ga')
             .then((result) => {
-                console.log(result.text);
+                target.reset();
+                addToast('Message sent successfully', { appearance: 'success', autoDismiss: true })
             }, (error) => {
-                console.log(error.text);
+                addToast("error", { appearance: 'error', autoDismiss: true })
             });
 
-        setEmailDetails({
-            ...emailDetails, user_name: '',
-            user_email: '',
-            message: '',
-        })
-    }
-
-    const handleChange = async e => {
-        const { name, value } = e.target;
-
-        setEmailDetails(prevState => ({
-            ...prevState,
-            [name]: value
-        }))
-
-    }
+    };
 
     return (
         <div className="row justify-content-center align-items-center pl-3 pr-3 mt-5">
@@ -50,47 +45,53 @@ export const Contact = () => {
                 <MDBCard className="wow fadeInDown" data-wow-iteration="1" data-wow-offset="80" data-wow-delay=".75s">
                     <MDBCardBody>
 
-                        <form onSubmit={(e) => handleSubmit(e)} >
+                        <form ref={form} onSubmit={handleSubmit(onSubmit)} >
+
                             <h2 className="text-center mb-4 mt-4">Contact</h2>
-                            <hr className="hr-light pink" />
+                            <hr className="hr-light pink mb-2" />
                             <input type="hidden" name="contact_number" />
 
-                            <MDBInput
-                                type="text"
-                                name="name"
-                                label="Type your name"
-                                rows="2"
-                                icon="user"
-                                iconClass="white-text"
-                                value={emailDetails.user_name}
-                                onChange={handleChange}
-                            />
-                            <MDBInput label="Type your email" name="email" icon="envelope" group type="email" iconClass="white-text" validate error="wrong"
-                                success="right" value={emailDetails.user_email} onChange={handleChange} />
-                            <MDBInput
-                                type="textarea"
-                                name="message"
-                                label="Type your message"
-                                rows="2"
-                                icon="envelope"
-                                iconClass="white-text"
-                                value={emailDetails.message}
-                                onChange={handleChange}
-                            />
+                            <div className="form_group field mb-3 ">
+                                <input name="name" type="input" className="form_field" placeholder="Search" ref={register({ required: true })} />
+                                <label className="form_label">Name</label>
+                                <div className="error-field pt-2">
+                                    <ErrorMessage error={errors.name} />
+                                </div>
+                            </div>
+
+                            <div className="form_group field mb-3">
+                                <input name="email" type="email" className="form_field" placeholder="Search" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
+                                <label className="form_label">E-mail</label>
+                                <div className="error-field pt-2">
+                                    <ErrorMessage error={errors.email} />
+                                </div>
+                            </div>
+
+                            <div className="form_group field mb-3">
+                                <textarea name="message" rows="3" cols="10" className="form_field" placeholder="Subject" ref={register({ required: true })} ></textarea>
+                                <label className="form_label">Subject</label>
+                                <div className="error-field pt-2">
+                                    <ErrorMessage error={errors.message} />
+                                </div>
+                            </div>
 
                             <div className="text-center py-4 mt-2">
-                                <button class="fill text-capitalize wow fadeIn" data-wow-iteration="1" data-wow-offset="80" data-wow-delay="1s">send</button>
-
+                                <button className="fill" disabled={isSubmitting} >Send</button>
                             </div>
+
                         </form>
 
                     </MDBCardBody>
 
                 </MDBCard>
-
             </MDBCol>
-
         </div>
-
     )
 }
+
+
+export const Contact = () => (
+    <ToastProvider>
+        <FormWithToasts />
+    </ToastProvider>
+)

@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Home } from './components/Home';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
+import { NotFound } from "./helpers/errors/NotFound";
 import './App.css';
 import { ServiceFrontEnd } from './components/ServiceFrontEnd';
 import { ServiceBackEnd } from './components/ServiceBackEnd';
@@ -56,7 +57,7 @@ function App() {
               <Route exact path="/contact" component={Contact} />
               <Route exact path={["/services/frontend", "/services"]} component={ServiceFrontEnd} />
               <Route exact path="/services/backend" component={ServiceBackEnd} />
-              <Route path='*' exact={true} component={Contact} />
+              <Route path='*' exact={true} component={NotFound} />
 
             </Switch>
 

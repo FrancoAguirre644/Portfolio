@@ -21,7 +21,7 @@ export const Navbar = ({ checkboxTheme }) => {
                 <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar >
                     <MDBNavbarNav right>
                         <MDBNavItem active>
-                            <MDBNavLink to={"/"}>Home</MDBNavLink>
+                            <MDBNavLink className="xx" to={"/"}>Home</MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
                             <MDBNavLink to={"/about"}>About</MDBNavLink>

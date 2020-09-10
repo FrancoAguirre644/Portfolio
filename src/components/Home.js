@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { MDBRow, MDBCol, MDBIcon, MDBBtn } from "mdbreact";
+import { MDBRow, MDBCol } from "mdbreact";
+import { Link } from 'react-router-dom';
 import WOW from 'wowjs';
 
 export const Home = () => {
@@ -24,8 +25,7 @@ export const Home = () => {
                         deleniti consequuntur nihil.
                     </h4>
 
-                    <button class="offset text-uppercase wow fadeIn" data-wow-iteration="1" data-wow-offset="80" data-wow-delay="1s">visit us</button>
-
+                    <Link to="/about"><button class="offset text-uppercase wow fadeIn" data-wow-iteration="1" data-wow-offset="80" data-wow-delay="1s">about me</button></Link>
                 </MDBCol>
             </MDBRow>
         </div>
