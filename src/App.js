@@ -15,6 +15,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./helpers/themes/GlobalStyles";
 import { lightTheme, darkTheme } from "./helpers/themes/themes";
 import { useDarkMode } from "./helpers/themes/useDarkMode";
+import { Example } from './components/Example';
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
 
   const checkboxTheme = (
     <div className="toggle-container">
-      <span style={{ color: themeMode === darkTheme ? "grey" : "yellow" }}>☀︎</span>
+      <span style={{ color: themeMode === darkTheme ? "grey" : "yellow" }} role="img" aria-label="sun">🔆</span>
       <span className="toggle">
         <input
           onChange={themeToggler}
@@ -34,7 +35,7 @@ function App() {
         />
         <label htmlFor="checkbox" />
       </span>
-      <span style={{ color: themeMode === darkTheme ? "slateblue" : "grey" }}>☾</span>
+      <span style={{ color: themeMode === darkTheme ? "slateblue" : "grey" }} role="img" aria-label="moon">🌙</span>
     </div>
   )
 
@@ -55,8 +56,9 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
               <Route exact path="/contact" component={Contact} />
-              <Route exact path={["/services/frontend", "/services"]} component={ServiceFrontEnd} />
-              <Route exact path="/services/backend" component={ServiceBackEnd} />
+              <Route exact path={["/works/frontend", "/works"]} component={ServiceFrontEnd} />
+              <Route exact path="/works/backend" component={ServiceBackEnd} />
+              <Route exact path="/example" component={Example} />
               <Route path='*' exact={true} component={NotFound} />
 
             </Switch>

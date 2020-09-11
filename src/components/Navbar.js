@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { MDBNavbar, MDBIcon, MDBContainer, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
+import mainLogo from '../logo.png';
+
 
 export const Navbar = ({ checkboxTheme }) => {
 
@@ -10,24 +12,24 @@ export const Navbar = ({ checkboxTheme }) => {
     }
 
     return (
-        <MDBNavbar transparent dark expand="md">
+        <MDBNavbar color="danger" style={{ backgroundColor: "black" }} dark expand="md">
             <MDBContainer>
                 <MDBNavbarBrand>
                     <MDBNavLink to={"/"}>
-                        <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" height="30" alt="" />
+                        <img src={mainLogo} height="40" alt="logo" />
                     </MDBNavLink>
                 </MDBNavbarBrand>
                 <MDBNavbarToggler onClick={toggleCollapse} />
                 <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar >
                     <MDBNavbarNav right>
                         <MDBNavItem active>
-                            <MDBNavLink className="xx" to={"/"}>Home</MDBNavLink>
+                            <MDBNavLink to={"/"}>Home</MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
                             <MDBNavLink to={"/about"}>About</MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <MDBNavLink to={"/services"}>Services</MDBNavLink>
+                            <MDBNavLink to={"/works"}>Works</MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
                             <MDBNavLink to={"/contact"}>Contact</MDBNavLink>

@@ -1,21 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol, MDBView, MDBIcon } from 'mdbreact';
-import WOW from 'wowjs';
 
 export const ServiceCard = (props) => {
 
-    useEffect(() => {
-        new WOW.WOW().init({
-            live: false
-        });
-    }, []);
-
     return (
+
         <MDBCol md='2' className="p-2" >
-            <MDBCard wide cascade style={{ borderColor: props.props.color }} className="wow fadeIn" data-wow-iteration="1" data-wow-offset="80" data-wow-delay=".90s" >
+            <MDBCard wide cascade style={{ borderColor: props.props.color }} >
                 <MDBView cascade>
                     <img
-                        hover
                         overlay='white-slight'
                         className='card-img-top'
                         src={props.props.url}
@@ -45,5 +38,6 @@ export const ServiceCard = (props) => {
                 </MDBCardBody>
             </MDBCard>
         </MDBCol>
+
     )
 }

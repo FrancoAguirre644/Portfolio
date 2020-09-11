@@ -1,18 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { MDBCol, MDBCard, MDBCardBody } from "mdbreact";
-import WOW from 'wowjs';
 import emailjs from 'emailjs-com';
 import { useForm } from 'react-hook-form';
 import ErrorMessage from '../helpers/errors/errorMessage';
 import { ToastProvider, useToasts } from 'react-toast-notifications';
+import Slide from 'react-reveal/Slide';
 
 const FormWithToasts = () => {
-
-    useEffect(() => {
-        new WOW.WOW().init({
-            live: false
-        });
-    }, []);
 
     const form = useRef(null);
 
@@ -40,52 +34,54 @@ const FormWithToasts = () => {
     };
 
     return (
-        <div className="row justify-content-center align-items-center pl-3 pr-3 mt-5">
-            <MDBCol md="4" >
-                <MDBCard className="wow fadeInDown" data-wow-iteration="1" data-wow-offset="80" data-wow-delay=".75s">
-                    <MDBCardBody>
+        <Slide down>
+            <div className="row justify-content-center align-items-center pl-3 pr-3 mt-5">
+                <MDBCol md="4" >
+                    <MDBCard >
+                        <MDBCardBody>
 
-                        <form ref={form} onSubmit={handleSubmit(onSubmit)} >
+                            <form ref={form} onSubmit={handleSubmit(onSubmit)} >
 
-                            <h2 className="text-center mb-4 mt-4">Contact</h2>
-                            <hr className="hr-light pink mb-2" />
-                            <input type="hidden" name="contact_number" />
+                                <h2 className="text-center mb-4 mt-4">Contact</h2>
+                                <hr className="hr-light pink mb-2" />
+                                <input type="hidden" name="contact_number" />
 
-                            <div className="form_group field mb-3 ">
-                                <input name="name" type="input" className="form_field" placeholder="Search" ref={register({ required: true })} />
-                                <label className="form_label">Name</label>
-                                <div className="error-field pt-2">
-                                    <ErrorMessage error={errors.name} />
+                                <div className="form_group field mb-3 ">
+                                    <input name="name" type="input" className="form_field" placeholder="Search" ref={register({ required: true })} />
+                                    <label className="form_label">Name</label>
+                                    <div className="error-field pt-2">
+                                        <ErrorMessage error={errors.name} />
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="form_group field mb-3">
-                                <input name="email" type="email" className="form_field" placeholder="Search" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
-                                <label className="form_label">E-mail</label>
-                                <div className="error-field pt-2">
-                                    <ErrorMessage error={errors.email} />
+                                <div className="form_group field mb-3">
+                                    <input name="email" type="email" className="form_field" placeholder="Search" ref={register({ required: true, pattern: /^\S+@\S+$/i })} />
+                                    <label className="form_label">E-mail</label>
+                                    <div className="error-field pt-2">
+                                        <ErrorMessage error={errors.email} />
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="form_group field mb-3">
-                                <textarea name="message" rows="3" cols="10" className="form_field" placeholder="Subject" ref={register({ required: true })} ></textarea>
-                                <label className="form_label">Subject</label>
-                                <div className="error-field pt-2">
-                                    <ErrorMessage error={errors.message} />
+                                <div className="form_group field mb-3">
+                                    <textarea name="message" rows="3" cols="10" className="form_field" placeholder="Subject" ref={register({ required: true })} ></textarea>
+                                    <label className="form_label">Subject</label>
+                                    <div className="error-field pt-2">
+                                        <ErrorMessage error={errors.message} />
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="text-center py-4 mt-2">
-                                <button className="fill" disabled={isSubmitting} >Send</button>
-                            </div>
+                                <div className="text-center py-4 mt-2">
+                                    <button className="fill" disabled={isSubmitting} >Send</button>
+                                </div>
 
-                        </form>
+                            </form>
 
-                    </MDBCardBody>
+                        </MDBCardBody>
 
-                </MDBCard>
-            </MDBCol>
-        </div>
+                    </MDBCard>
+                </MDBCol>
+            </div>
+        </Slide>
     )
 }
 
