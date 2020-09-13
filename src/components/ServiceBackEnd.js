@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { MDBRow, MDBBtn } from 'mdbreact';
 import { ServiceCard } from './ServiceCard';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,10 @@ import { dataBackend } from '../helpers/data/projectsBackend';
 import Slide from 'react-reveal/Slide';
 
 export const ServiceBackEnd = () => {
+
+    useEffect(() => {
+        document.title = "Works";
+    }, []);
 
     return (
         <Fragment>

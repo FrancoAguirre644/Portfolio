@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { MDBCol, MDBCard, MDBCardBody } from "mdbreact";
 import emailjs from 'emailjs-com';
 import { useForm } from 'react-hook-form';
@@ -7,6 +7,10 @@ import { ToastProvider, useToasts } from 'react-toast-notifications';
 import Slide from 'react-reveal/Slide';
 
 const FormWithToasts = () => {
+
+    useEffect(() => {
+        document.title = "Contact";
+    }, []);
 
     const form = useRef(null);
 
@@ -87,7 +91,9 @@ const FormWithToasts = () => {
 
 
 export const Contact = () => (
+
     <ToastProvider>
         <FormWithToasts />
     </ToastProvider>
+
 )

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { MDBNavbar, MDBIcon, MDBContainer, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
-import mainLogo from '../logo.png';
-
+import mainLogo from '../assets/logo.png';
 
 export const Navbar = ({ checkboxTheme }) => {
 
@@ -35,14 +34,10 @@ export const Navbar = ({ checkboxTheme }) => {
                             <MDBNavLink to={"/contact"}>Contact</MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <MDBNavLink className="waves-effect waves-light" to="#!">
-                                <MDBIcon fab icon="linkedin" />
-                            </MDBNavLink>
+                            <a className="waves-effect waves-light mt-2 mx-2 text-white" href="https://www.linkedin.com/in/franco-aguirre-6b5739194/"><MDBIcon fab icon="linkedin" /></a>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <MDBNavLink className="waves-effect waves-light" to="https://github.com/FrancoAguirre644/LoginJWT-Spring">
-                                <MDBIcon fab icon="github" />
-                            </MDBNavLink>
+                            <a className="waves-effect waves-light mt-2 mr-2 text-white" href="https://github.com/FrancoAguirre644"><MDBIcon fab icon="github" /></a>
                         </MDBNavItem>
                         <MDBNavItem>
                             {checkboxTheme}
@@ -50,7 +45,6 @@ export const Navbar = ({ checkboxTheme }) => {
                     </MDBNavbarNav>
                 </MDBCollapse>
             </MDBContainer>
-
         </MDBNavbar>
 
 

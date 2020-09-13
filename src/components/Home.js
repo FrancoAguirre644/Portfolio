@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MDBRow, MDBCol } from "mdbreact";
 import { Link } from 'react-router-dom';
 import LightSpeed from 'react-reveal/LightSpeed';
 
 export const Home = () => {
+
+    useEffect(() => {
+        document.title = "Home";
+    }, []);
 
     return (
         <div className="justify-content-center align-items-center mt-6">
@@ -11,7 +15,7 @@ export const Home = () => {
                 <MDBCol md="12" className="mb-4 text-center">
                     <LightSpeed>
                         <h3 className="display-3 font-weight-bold mb-0 pt-md-2">
-                            Creative Agency
+                            Franco Aguirre Developer
                         </h3>
 
                         <hr className="hr-light my-4 w-75 pink" />

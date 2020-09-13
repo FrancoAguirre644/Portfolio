@@ -15,7 +15,6 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./helpers/themes/GlobalStyles";
 import { lightTheme, darkTheme } from "./helpers/themes/themes";
 import { useDarkMode } from "./helpers/themes/useDarkMode";
-import { Example } from './components/Example';
 
 function App() {
 
@@ -58,7 +57,6 @@ function App() {
               <Route exact path="/contact" component={Contact} />
               <Route exact path={["/works/frontend", "/works"]} component={ServiceFrontEnd} />
               <Route exact path="/works/backend" component={ServiceBackEnd} />
-              <Route exact path="/example" component={Example} />
               <Route path='*' exact={true} component={NotFound} />
 
             </Switch>
