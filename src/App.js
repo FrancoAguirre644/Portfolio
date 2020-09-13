@@ -44,7 +44,7 @@ function App() {
       <>
         <GlobalStyles />
 
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
 
           <div className="view">
 
