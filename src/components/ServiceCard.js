@@ -5,7 +5,7 @@ export const ServiceCard = (props) => {
 
     return (
 
-        <MDBCol md='2' className="p-2" >
+        <MDBCol md='2' className="p-2 mx-2 mb-2" >
             <MDBCard wide cascade style={{ borderColor: props.props.color }} >
                 <MDBView cascade>
                     <img

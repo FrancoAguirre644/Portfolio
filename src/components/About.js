@@ -13,7 +13,7 @@ export const About = () => {
     return (
         <Zoom>
             <div className="row justify-content-center align-items-center mt-5 mb-2">
-                <MDBCard border="success" className="w-75" style={{ width: "22rem", backgroundColor: "transparent", marginTop: "1rem" }}>
+                <MDBCard border="success" className="w-75 nice-green-border" style={{ width: "22rem", backgroundColor: "transparent", marginTop: "1rem" }}>
                     <MDBCardHeader color="success-color" className="nice-green" >About me</MDBCardHeader>
                     <MDBCardBody>
                         <MDBRow >

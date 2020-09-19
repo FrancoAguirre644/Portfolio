@@ -37,7 +37,7 @@ export const Navbar = ({ checkboxTheme }) => {
                             <a className="waves-effect waves-light mt-2 mx-2 text-white" href="https://www.linkedin.com/in/franco-aguirre-6b5739194/"><MDBIcon fab icon="linkedin" /></a>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <a className="waves-effect waves-light mt-2 mr-2 text-white" href="https://github.com/FrancoAguirre644"><MDBIcon fab icon="github" /></a>
+                            <a className="waves-effect waves-light mt-2 mx-2 text-white" href="https://github.com/FrancoAguirre644"><MDBIcon fab icon="github" /></a>
                         </MDBNavItem>
                         <MDBNavItem>
                             {checkboxTheme}
